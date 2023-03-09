@@ -50,3 +50,8 @@ class OnlinePaymentAdmin(ModelAdmin, ImportExportModelAdmin):
 @admin.register(models.Net)
 class NetAdmin(ModelAdmin, ImportExportModelAdmin):
     """Admin View for Net"""
+
+
+@admin.register(models.AccountManager)
+class AccountManagerAdmin(admin.ModelAdmin):
+    """Admin View for AccountManager"""
