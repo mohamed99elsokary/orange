@@ -2,12 +2,13 @@ from django.contrib import admin
 from . import models
 
 from unfold.admin import ModelAdmin
-from import_export.admin import ImportExportModelAdmin
+
+# from import_export.admin import
 
 
 # Register your models here.
 @admin.register(models.Customer)
-class ProfileAdmin(ModelAdmin, ImportExportModelAdmin):
+class ProfileAdmin(admin.ModelAdmin):
     """Admin View for Profile"""
 
     list_display = (
@@ -28,27 +29,37 @@ class ProfileAdmin(ModelAdmin, ImportExportModelAdmin):
 
 
 @admin.register(models.Package)
-class PackageAdmin(ModelAdmin, ImportExportModelAdmin):
+class PackageAdmin(
+    admin.ModelAdmin,
+):
     """Admin View for Package"""
 
 
 @admin.register(models.Provider)
-class ProviderAdmin(ModelAdmin, ImportExportModelAdmin):
+class ProviderAdmin(
+    admin.ModelAdmin,
+):
     """Admin View for Provider"""
 
 
 @admin.register(models.Payon)
-class PayonAdmin(ModelAdmin, ImportExportModelAdmin):
+class PayonAdmin(
+    admin.ModelAdmin,
+):
     """Admin View for Payon"""
 
 
 @admin.register(models.OnlinePayment)
-class OnlinePaymentAdmin(ModelAdmin, ImportExportModelAdmin):
+class OnlinePaymentAdmin(
+    admin.ModelAdmin,
+):
     """Admin View for OnlinePayment"""
 
 
 @admin.register(models.Net)
-class NetAdmin(ModelAdmin, ImportExportModelAdmin):
+class NetAdmin(
+    admin.ModelAdmin,
+):
     """Admin View for Net"""
 
 
