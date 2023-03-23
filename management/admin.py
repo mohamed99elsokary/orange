@@ -1,14 +1,13 @@
 from django.contrib import admin
 from . import models
 
-from unfold.admin import ModelAdmin
 
-# from import_export.admin import
+from import_export.admin import ImportExportMixin
 
 
 # Register your models here.
 @admin.register(models.Customer)
-class ProfileAdmin(admin.ModelAdmin):
+class ProfileAdmin(ImportExportMixin, admin.ModelAdmin):
     """Admin View for Profile"""
 
     list_display = (
@@ -26,43 +25,50 @@ class ProfileAdmin(admin.ModelAdmin):
         "account_manager",
         "net",
     )
+    fields = [
+        ("full_name", "online_payment"),
+        ("mobile_number", "actual_bill"),
+        ("package", "total_bill"),
+        ("account_number", "commission"),
+        ("provider", "activation_date"),
+        ("account_manager",),
+        ("net", "rch"),
+        ("ntra", "suspended"),
+        ("notes",),
+        ("mr", "new_account_number"),
+        ("mazaya_annual",),
+        ("mazaya_annual_start_date", "mazaya_annual_end_date"),
+        ("device_installments",),
+        ("installments_start_date", "installments_end_date"),
+        ("installments_phone_number", "device_type"),
+    ]
 
 
 @admin.register(models.Package)
-class PackageAdmin(
-    admin.ModelAdmin,
-):
+class PackageAdmin(ImportExportMixin, admin.ModelAdmin):
     """Admin View for Package"""
 
 
 @admin.register(models.Provider)
-class ProviderAdmin(
-    admin.ModelAdmin,
-):
+class ProviderAdmin(ImportExportMixin, admin.ModelAdmin):
     """Admin View for Provider"""
 
 
 @admin.register(models.Payon)
-class PayonAdmin(
-    admin.ModelAdmin,
-):
+class PayonAdmin(ImportExportMixin, admin.ModelAdmin):
     """Admin View for Payon"""
 
 
 @admin.register(models.OnlinePayment)
-class OnlinePaymentAdmin(
-    admin.ModelAdmin,
-):
+class OnlinePaymentAdmin(ImportExportMixin, admin.ModelAdmin):
     """Admin View for OnlinePayment"""
 
 
 @admin.register(models.Net)
-class NetAdmin(
-    admin.ModelAdmin,
-):
+class NetAdmin(ImportExportMixin, admin.ModelAdmin):
     """Admin View for Net"""
 
 
 @admin.register(models.AccountManager)
-class AccountManagerAdmin(admin.ModelAdmin):
+class AccountManagerAdmin(ImportExportMixin, admin.ModelAdmin):
     """Admin View for AccountManager"""

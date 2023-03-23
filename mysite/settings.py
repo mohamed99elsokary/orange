@@ -32,9 +32,6 @@ CSRF_TRUSTED_ORIGINS = ["https://django-server-production-061e.up.railway.app"]
 # Application definition
 
 INSTALLED_APPS = [
-    # "unfold",  # before django.contrib.admin
-    # "unfold.contrib.filters",  # optional, if special filters are needed
-    # "unfold.contrib.forms",  # optional, if special form elements are needed
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -42,7 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "management",
-    # "import_export",
+    "import_export",
 ]
 
 MIDDLEWARE = [
