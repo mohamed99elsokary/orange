@@ -44,7 +44,7 @@ class ProfileAdmin(ImportExportMixin, admin.ModelAdmin):
         ("no_ntra", "suspended"),
         ("ntra_details", "lines_to_same_user"),
         ("mr_to_account", "new_account_number"),
-        ("mr_to_corporate", "pause", "new_line"),
+        ("mr_to_corporate", "new_line", "pause"),
         ("mazaya_annual"),
         ("mazaya_annual_start_date", "mazaya_annual_end_date"),
         ("device_installments"),
