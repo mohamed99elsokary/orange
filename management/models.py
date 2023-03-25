@@ -103,7 +103,8 @@ class Customer(models.Model):
     activation_date = models.DateField(
         auto_now=False, auto_now_add=False, null=True, blank=True, default=None
     )
-    ntra = models.CharField(max_length=50, null=True, blank=True, default=None)
+    no_ntra = models.BooleanField(default=False)
+    ntra_details = models.CharField(max_length=50, null=True, blank=True, default=None)
     is_notes = models.BooleanField(default=False)
     notes = models.TextField(null=True, blank=True, default=None)
 

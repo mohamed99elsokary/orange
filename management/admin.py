@@ -24,23 +24,26 @@ class ProfileAdmin(ImportExportMixin, admin.ModelAdmin):
         "account_manager",
         "net",
     )
-    # fields = [
-    #     ("full_name", "online_payment"),
-    #     ("mobile_number", "actual_bill"),
-    #     ("package", "total_bill"),
-    #     ("account_number", "commission"),
-    #     ("provider", "activation_date"),
-    #     ("account_manager",),
-    #     ("net", "rch"),
-    #     ("ntra", "suspended"),
-    #     ("notes",),
-    #     ("mr_to_account", "new_account_number"),
-    #     ("mr_to_corporate", "mazaya_annual"),
-    #     ("mazaya_annual_start_date", "mazaya_annual_end_date"),
-    #     ("device_installments",),
-    #     ("installments_start_date", "installments_end_date"),
-    #     ("installments_phone_number", "device_type"),
-    # ]
+    fields = [
+        ("full_name", "online_payment"),
+        ("mobile_number", "actual_bill"),
+        ("package", "total_bill"),
+        ("account_number", "commission"),
+        ("provider", "activation_date"),
+        ("account_manager", "special_offer"),
+        ("net", "rch"),
+        ("no_ntra", "suspended"),
+        ("ntra_details", "lines_to_same_user"),
+        ("mr_to_account", "new_account_number"),
+        ("mr_to_corporate", "mazaya_annual"),
+        ("pause", "new_line"),
+        ("mazaya_annual_start_date", "mazaya_annual_end_date"),
+        ("device_installments"),
+        ("installments_start_date", "installments_end_date"),
+        ("installments_phone_number", "device_type"),
+        ("is_notes",),
+        ("notes",),
+    ]
 
 
 @admin.register(models.Package)
