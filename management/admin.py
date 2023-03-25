@@ -78,3 +78,8 @@ class NetAdmin(ImportExportMixin, admin.ModelAdmin):
 @admin.register(models.AccountManager)
 class AccountManagerAdmin(ImportExportMixin, admin.ModelAdmin):
     """Admin View for AccountManager"""
+
+
+@admin.register(models.SpecialOffer)
+class SpecialOfferAdmin(ImportExportMixin, admin.ModelAdmin):
+    """Admin View for SpecialOffer"""
