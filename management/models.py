@@ -17,13 +17,6 @@ class Provider(models.Model):
         return self.name
 
 
-class Payon(models.Model):
-    name = models.CharField(max_length=50)
-
-    def __str__(self):
-        return self.name
-
-
 class OnlinePayment(models.Model):
     name = models.CharField(max_length=50)
 
@@ -49,6 +42,15 @@ class AccountManager(models.Model):
         return self.name
 
 
+class SpecialOffer(models.Model):
+    # relations
+    name = models.CharField(max_length=50)
+    # fields
+
+    def __str__(self):
+        return self.name
+
+
 class Customer(models.Model):
     # relations
     full_name = models.CharField(max_length=50)
@@ -61,12 +63,11 @@ class Customer(models.Model):
     provider = models.ForeignKey(
         Provider, on_delete=models.CASCADE, null=True, blank=True, default=None
     )
-    pay_on = models.ForeignKey(
-        Payon, on_delete=models.CASCADE, null=True, blank=True, default=None
-    )
+
     online_payment = models.ForeignKey(
         OnlinePayment, on_delete=models.CASCADE, null=True, blank=True, default=None
     )
+
     mazaya_annual = models.BooleanField(default=False)
     mazaya_annual_start_date = models.DateField(
         auto_now=False, auto_now_add=False, null=True, blank=True, default=None
@@ -77,7 +78,6 @@ class Customer(models.Model):
     account_manager = models.ForeignKey(
         AccountManager, on_delete=models.CASCADE, null=True, blank=True, default=None
     )
-    mr = models.BooleanField(default=False)
     new_account_number = models.CharField(
         max_length=50, null=True, blank=True, default=None
     )
@@ -87,7 +87,6 @@ class Customer(models.Model):
     net = models.ForeignKey(
         Net, on_delete=models.CASCADE, null=True, blank=True, default=None
     )
-    rch = models.BooleanField(default=False)
     rch = models.BooleanField(default=False)
     device_installments = models.BooleanField(default=False)
     installments_start_date = models.DateField(
@@ -100,7 +99,6 @@ class Customer(models.Model):
     installments_phone_number = models.CharField(
         max_length=50, null=True, blank=True, default=None
     )
-    pause = models.BooleanField(default=False)
     suspended = models.BooleanField(default=False)
     activation_date = models.DateField(
         auto_now=False, auto_now_add=False, null=True, blank=True, default=None
@@ -108,6 +106,15 @@ class Customer(models.Model):
     ntra = models.CharField(max_length=50, null=True, blank=True, default=None)
     is_notes = models.BooleanField(default=False)
     notes = models.TextField(null=True, blank=True, default=None)
+
+    special_offer = models.ForeignKey(
+        SpecialOffer, on_delete=models.CASCADE, null=True, blank=True, default=None
+    )
+    lines_to_same_user = models.IntegerField()
+    mr_to_account = models.BooleanField(default=False)
+    mr_to_corporate = models.BooleanField(default=False)
+    new_line = models.BooleanField(default=False)
+    pause = models.BooleanField(default=False)
 
     def __str__(self):
         return self.full_name

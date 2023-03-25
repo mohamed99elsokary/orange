@@ -20,7 +20,6 @@ class ProfileAdmin(ImportExportMixin, admin.ModelAdmin):
     list_filter = (
         "package",
         "provider",
-        "pay_on",
         "online_payment",
         "account_manager",
         "net",
