@@ -17,12 +17,21 @@ class ProfileAdmin(ImportExportMixin, admin.ModelAdmin):
         "account_number",
         "is_notes",
     )
+    search_fields = (
+        "account_manager__name",
+        "online_payment__name",
+        "net__name",
+    )
     list_filter = (
-        "package",
-        "provider",
-        "online_payment",
-        "account_manager",
-        "net",
+        "no_ntra",
+        "rch",
+        "suspended",
+        "mr_to_account",
+        "mr_to_corporate",
+        "mazaya_annual",
+        "device_installments",
+        "new_line",
+        "pause",
     )
     fields = [
         ("full_name", "online_payment"),
