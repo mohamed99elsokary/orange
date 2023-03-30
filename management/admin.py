@@ -18,9 +18,20 @@ class ProfileAdmin(ImportExportMixin, admin.ModelAdmin):
         "is_notes",
     )
     search_fields = (
+        "full_name",
+        "mobile_number",
+        "package__name",
+        "account_number",
+        "provider__name",
         "account_manager__name",
         "online_payment__name",
+        "actual_bill",
+        "total_bill",
+        "commission",
         "net__name",
+        "installments_phone_number",
+        "device_type",
+        "lines_to_same_user",
     )
     list_filter = (
         "no_ntra",
@@ -28,10 +39,11 @@ class ProfileAdmin(ImportExportMixin, admin.ModelAdmin):
         "suspended",
         "mr_to_account",
         "mr_to_corporate",
-        "mazaya_annual",
-        "device_installments",
         "new_line",
         "pause",
+        "device_installments",
+        "mazaya_annual",
+        "is_notes",
     )
     fields = [
         ("full_name", "online_payment"),
