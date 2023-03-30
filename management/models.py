@@ -57,16 +57,10 @@ class Customer(models.Model):
     mobile_number = models.CharField(max_length=50)
     package = models.ForeignKey(Package, on_delete=models.DO_NOTHING)
 
-    account_number = models.CharField(
-        max_length=50, null=True, blank=True, default=None
-    )
-    provider = models.ForeignKey(
-        Provider, on_delete=models.DO_NOTHING, null=True, blank=True, default=None
-    )
+    account_number = models.CharField(max_length=50)
+    provider = models.ForeignKey(Provider, on_delete=models.DO_NOTHING)
 
-    online_payment = models.ForeignKey(
-        OnlinePayment, on_delete=models.DO_NOTHING, null=True, blank=True, default=None
-    )
+    online_payment = models.ForeignKey(OnlinePayment, on_delete=models.DO_NOTHING)
 
     mazaya_annual = models.BooleanField(default=False)
     mazaya_annual_start_date = models.DateField(
@@ -81,9 +75,9 @@ class Customer(models.Model):
     new_account_number = models.CharField(
         max_length=50, null=True, blank=True, default=None
     )
-    actual_bill = models.CharField(max_length=50, null=True, blank=True, default=None)
-    total_bill = models.CharField(max_length=50, null=True, blank=True, default=None)
-    commission = models.CharField(max_length=50, null=True, blank=True, default=None)
+    actual_bill = models.CharField(max_length=50)
+    total_bill = models.CharField(max_length=50)
+    commission = models.CharField(max_length=50)
     net = models.ForeignKey(
         Net, on_delete=models.DO_NOTHING, null=True, blank=True, default=None
     )
@@ -100,9 +94,7 @@ class Customer(models.Model):
         max_length=50, null=True, blank=True, default=None
     )
     suspended = models.BooleanField(default=False)
-    activation_date = models.DateField(
-        auto_now=False, auto_now_add=False, null=True, blank=True, default=None
-    )
+    activation_date = models.DateField(auto_now=False, auto_now_add=False)
     no_ntra = models.BooleanField(default=False)
     ntra_details = models.CharField(max_length=50, null=True, blank=True, default=None)
     is_notes = models.BooleanField(default=False)
@@ -111,7 +103,7 @@ class Customer(models.Model):
     special_offer = models.ForeignKey(
         SpecialOffer, on_delete=models.DO_NOTHING, null=True, blank=True, default=None
     )
-    lines_to_same_user = models.IntegerField()
+    lines_to_same_user = models.IntegerField(null=True, blank=True)
     mr_to_account = models.BooleanField(default=False)
     mr_to_corporate = models.BooleanField(default=False)
     new_line = models.BooleanField(default=False)
