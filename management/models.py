@@ -55,17 +55,17 @@ class Customer(models.Model):
     # relations
     full_name = models.CharField(max_length=50)
     mobile_number = models.CharField(max_length=50)
-    package = models.ForeignKey(Package, on_delete=models.CASCADE)
+    package = models.ForeignKey(Package, on_delete=models.DO_NOTHING)
 
     account_number = models.CharField(
         max_length=50, null=True, blank=True, default=None
     )
     provider = models.ForeignKey(
-        Provider, on_delete=models.CASCADE, null=True, blank=True, default=None
+        Provider, on_delete=models.DO_NOTHING, null=True, blank=True, default=None
     )
 
     online_payment = models.ForeignKey(
-        OnlinePayment, on_delete=models.CASCADE, null=True, blank=True, default=None
+        OnlinePayment, on_delete=models.DO_NOTHING, null=True, blank=True, default=None
     )
 
     mazaya_annual = models.BooleanField(default=False)
@@ -76,7 +76,7 @@ class Customer(models.Model):
         auto_now=False, auto_now_add=False, null=True, blank=True, default=None
     )
     account_manager = models.ForeignKey(
-        AccountManager, on_delete=models.CASCADE, null=True, blank=True, default=None
+        AccountManager, on_delete=models.DO_NOTHING, null=True, blank=True, default=None
     )
     new_account_number = models.CharField(
         max_length=50, null=True, blank=True, default=None
@@ -85,7 +85,7 @@ class Customer(models.Model):
     total_bill = models.CharField(max_length=50, null=True, blank=True, default=None)
     commission = models.CharField(max_length=50, null=True, blank=True, default=None)
     net = models.ForeignKey(
-        Net, on_delete=models.CASCADE, null=True, blank=True, default=None
+        Net, on_delete=models.DO_NOTHING, null=True, blank=True, default=None
     )
     rch = models.BooleanField(default=False)
     device_installments = models.BooleanField(default=False)
@@ -109,7 +109,7 @@ class Customer(models.Model):
     notes = models.TextField(null=True, blank=True, default=None)
 
     special_offer = models.ForeignKey(
-        SpecialOffer, on_delete=models.CASCADE, null=True, blank=True, default=None
+        SpecialOffer, on_delete=models.DO_NOTHING, null=True, blank=True, default=None
     )
     lines_to_same_user = models.IntegerField()
     mr_to_account = models.BooleanField(default=False)
