@@ -44,7 +44,7 @@ class AccountManager(models.Model):
 
 class SpecialOffer(models.Model):
     # relations
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=200)
     # fields
 
     def __str__(self):
@@ -63,12 +63,6 @@ class Customer(models.Model):
     online_payment = models.ForeignKey(OnlinePayment, on_delete=models.DO_NOTHING)
 
     mazaya_annual = models.BooleanField(default=False)
-    mazaya_annual_start_date = models.DateField(
-        auto_now=False, auto_now_add=False, null=True, blank=True, default=None
-    )
-    mazaya_annual_end_date = models.DateField(
-        auto_now=False, auto_now_add=False, null=True, blank=True, default=None
-    )
     account_manager = models.ForeignKey(
         AccountManager, on_delete=models.DO_NOTHING, null=True, blank=True, default=None
     )
@@ -81,6 +75,12 @@ class Customer(models.Model):
     net = models.ForeignKey(
         Net, on_delete=models.DO_NOTHING, null=True, blank=True, default=None
     )
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, null=True, blank=True, default=None
+    )
+    is_special = models.BooleanField(default=False)
+    is_net = models.BooleanField(default=False)
+    notional_id = models.CharField(max_length=50)
     rch = models.BooleanField(default=False)
     device_installments = models.BooleanField(default=False)
     installments_start_date = models.DateField(
@@ -94,12 +94,17 @@ class Customer(models.Model):
         max_length=50, null=True, blank=True, default=None
     )
     suspended = models.BooleanField(default=False)
-    activation_date = models.DateField(auto_now=False, auto_now_add=False)
+    activation_date = models.DateField(
+        auto_now=False, auto_now_add=False, null=True, blank=True, default=None
+    )
     no_ntra = models.BooleanField(default=False)
     ntra_details = models.CharField(max_length=50, null=True, blank=True, default=None)
     is_notes = models.BooleanField(default=False)
     notes = models.TextField(null=True, blank=True, default=None)
-
+    smart_payment = models.BooleanField(default=False)
+    bills_payment = models.TextField()
+    is_important_notes = models.BooleanField(default=False)
+    important_notes = models.TextField()
     special_offer = models.ForeignKey(
         SpecialOffer, on_delete=models.DO_NOTHING, null=True, blank=True, default=None
     )
