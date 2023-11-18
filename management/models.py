@@ -25,27 +25,21 @@ class OnlinePayment(models.Model):
 
 
 class Net(models.Model):
-    # relations
     name = models.CharField(max_length=50)
-    # fields
 
     def __str__(self):
         return self.name
 
 
 class AccountManager(models.Model):
-    # relations
     name = models.CharField(max_length=50)
-    # fields
 
     def __str__(self):
         return self.name
 
 
 class SpecialOffer(models.Model):
-    # relations
     name = models.CharField(max_length=200)
-    # fields
 
     def __str__(self):
         return self.name
@@ -75,36 +69,21 @@ class Customer(models.Model):
     net = models.ForeignKey(
         Net, on_delete=models.DO_NOTHING, null=True, blank=True, default=None
     )
-    user = models.ForeignKey(
-        User, on_delete=models.CASCADE, null=True, blank=True, default=None
-    )
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     is_special = models.BooleanField(default=False)
     is_net = models.BooleanField(default=False)
-    notional_id = models.CharField(max_length=50)
+    notional_id = models.CharField(max_length=50,null=True, blank=True, default=None)
     rch = models.BooleanField(default=False)
     device_installments = models.BooleanField(default=False)
-    installments_start_date = models.DateField(
-        auto_now=False, auto_now_add=False, null=True, blank=True, default=None
-    )
-    installments_end_date = models.DateField(
-        auto_now=False, auto_now_add=False, null=True, blank=True, default=None
-    )
-    device_type = models.CharField(max_length=50, null=True, blank=True, default=None)
-    installments_phone_number = models.CharField(
-        max_length=50, null=True, blank=True, default=None
-    )
     suspended = models.BooleanField(default=False)
-    activation_date = models.DateField(
-        auto_now=False, auto_now_add=False, null=True, blank=True, default=None
-    )
+    activation_date = models.CharField(max_length=50, null=True, blank=True, default=None)
     no_ntra = models.BooleanField(default=False)
     ntra_details = models.CharField(max_length=50, null=True, blank=True, default=None)
     is_notes = models.BooleanField(default=False)
     notes = models.TextField(null=True, blank=True, default=None)
     smart_payment = models.BooleanField(default=False)
-    bills_payment = models.TextField()
+    bills_payment = models.TextField(null=True, blank=True, default=None)
     is_important_notes = models.BooleanField(default=False)
-    important_notes = models.TextField()
     special_offer = models.ForeignKey(
         SpecialOffer, on_delete=models.DO_NOTHING, null=True, blank=True, default=None
     )
@@ -113,6 +92,6 @@ class Customer(models.Model):
     mr_to_corporate = models.BooleanField(default=False)
     new_line = models.BooleanField(default=False)
     pause = models.BooleanField(default=False)
-
+    registration_date = models.CharField(max_length=50,null=True, blank=True,default=None)
     def __str__(self):
         return self.full_name
