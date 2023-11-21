@@ -24,8 +24,6 @@ django-unfold==0.8
 django-lifecycle==1.0.0
 django-silk==5.0.3
 django-colorfield==0.8.0
-./packages/django-payment-V1.6.8.tar.gz
-./packages/bit68_notifications-1.0.9.tar.gz
 rq==1.15.0
 django-rq==2.8.1
 django_cron==0.6.0
