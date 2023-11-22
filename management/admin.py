@@ -31,7 +31,8 @@ class ProfileAdmin(ImportExportMixin, admin.ModelAdmin):
         "net__name",
         "lines_to_same_user",
         "activation_date",
-        "user__username"
+        "user__username",
+        "registration_date",
     )
     list_filter = (
         "no_ntra",
@@ -43,10 +44,10 @@ class ProfileAdmin(ImportExportMixin, admin.ModelAdmin):
         "pause",
         "device_installments",
         "mazaya_annual",
-        "is_notes", 
+        "is_notes",
         "is_important_notes",
-        "is_special","smart_payment"
-        
+        "is_special",
+        "smart_payment",
     )
     fields = [
         ("full_name", "online_payment"),
@@ -57,7 +58,7 @@ class ProfileAdmin(ImportExportMixin, admin.ModelAdmin):
         ("account_manager", "activation_date"),
         ("is_special", "special_offer"),
         ("is_net", "net"),
-        ("no_ntra", "suspended","registration_date"),
+        ("no_ntra", "suspended", "registration_date"),
         ("ntra_details", "lines_to_same_user"),
         ("rch", "notional_id"),
         ("mr_to_account", "new_account_number"),
@@ -66,7 +67,7 @@ class ProfileAdmin(ImportExportMixin, admin.ModelAdmin):
         ("device_installments"),
         ("smart_payment",),
         ("bills_payment"),
-        ("is_notes","is_important_notes"),
+        ("is_notes", "is_important_notes"),
         ("notes"),
     ]
 

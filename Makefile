@@ -1,0 +1,3 @@
+
+redeploy:
+	bash redeploy.sh
