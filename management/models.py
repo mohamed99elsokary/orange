@@ -49,16 +49,16 @@ class Customer(models.Model):
     # relations
     full_name = models.CharField(max_length=50)
     mobile_number = models.CharField(max_length=50)
-    package = models.ForeignKey(Package, on_delete=models.DO_NOTHING)
+    package = models.ForeignKey(Package, on_delete=models.SET_NULL)
 
     account_number = models.CharField(max_length=50)
-    provider = models.ForeignKey(Provider, on_delete=models.DO_NOTHING)
+    provider = models.ForeignKey(Provider, on_delete=models.SET_NULL)
 
-    online_payment = models.ForeignKey(OnlinePayment, on_delete=models.DO_NOTHING)
+    online_payment = models.ForeignKey(OnlinePayment, on_delete=models.SET_NULL)
 
     mazaya_annual = models.BooleanField(default=False)
     account_manager = models.ForeignKey(
-        AccountManager, on_delete=models.DO_NOTHING, null=True, blank=True, default=None
+        AccountManager, on_delete=models.SET_NULL, null=True, blank=True, default=None
     )
     new_account_number = models.CharField(
         max_length=50, null=True, blank=True, default=None
@@ -67,16 +67,18 @@ class Customer(models.Model):
     total_bill = models.CharField(max_length=50)
     commission = models.CharField(max_length=50)
     net = models.ForeignKey(
-        Net, on_delete=models.DO_NOTHING, null=True, blank=True, default=None
+        Net, on_delete=models.SET_NULL, null=True, blank=True, default=None
     )
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL)
     is_special = models.BooleanField(default=False)
     is_net = models.BooleanField(default=False)
-    notional_id = models.CharField(max_length=50,null=True, blank=True, default=None)
+    notional_id = models.CharField(max_length=50, null=True, blank=True, default=None)
     rch = models.BooleanField(default=False)
     device_installments = models.BooleanField(default=False)
     suspended = models.BooleanField(default=False)
-    activation_date = models.CharField(max_length=50, null=True, blank=True, default=None)
+    activation_date = models.CharField(
+        max_length=50, null=True, blank=True, default=None
+    )
     no_ntra = models.BooleanField(default=False)
     ntra_details = models.CharField(max_length=50, null=True, blank=True, default=None)
     is_notes = models.BooleanField(default=False)
@@ -85,13 +87,16 @@ class Customer(models.Model):
     bills_payment = models.TextField(null=True, blank=True, default=None)
     is_important_notes = models.BooleanField(default=False)
     special_offer = models.ForeignKey(
-        SpecialOffer, on_delete=models.DO_NOTHING, null=True, blank=True, default=None
+        SpecialOffer, on_delete=models.SET_NULL, null=True, blank=True, default=None
     )
     lines_to_same_user = models.IntegerField(null=True, blank=True)
     mr_to_account = models.BooleanField(default=False)
     mr_to_corporate = models.BooleanField(default=False)
     new_line = models.BooleanField(default=False)
     pause = models.BooleanField(default=False)
-    registration_date = models.CharField(max_length=50,null=True, blank=True,default=None)
+    registration_date = models.CharField(
+        max_length=50, null=True, blank=True, default=None
+    )
+
     def __str__(self):
         return self.full_name
